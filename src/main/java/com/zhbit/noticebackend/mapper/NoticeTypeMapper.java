@@ -18,7 +18,7 @@ public interface NoticeTypeMapper {
     @ResultMap("noticeTypeMap")
     NoticeType findByTypeName(@Param("typeName") String typeName);
 
-    @Select("SELECT * FROM notice_type")
+    @Select("SELECT id, type_name FROM notice_type")
     @Results(id = "noticeTypeMap", value = {
             @Result(property = "id", column = "id"),
             @Result(property = "typeName", column = "type_name")
