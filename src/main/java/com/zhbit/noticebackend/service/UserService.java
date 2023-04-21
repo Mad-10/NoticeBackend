@@ -39,7 +39,7 @@ public class UserService {
             throw new UserNotFoundException("User has not been registered.");
         }
         if (!user.getPassword().equals(password)) {
-            throw new PasswordNotMatchException("Password not match");
+            throw new PasswordNotMatchException();
         }
         return user;
     }
