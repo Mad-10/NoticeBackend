@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public class NoticeRecordService {
 
-    @Autowired
     private final NoticeRecordMapper noticeRecordMapper;
 
+    @Autowired
     public NoticeRecordService(NoticeRecordMapper noticeRecordMapper) {
         this.noticeRecordMapper = noticeRecordMapper;
     }
@@ -40,6 +40,5 @@ public class NoticeRecordService {
     public List<NoticeRecord> findByNoticeType(Integer typeId) {
         return noticeRecordMapper.findByNoticeType(typeId);
     }
-
 
 }
