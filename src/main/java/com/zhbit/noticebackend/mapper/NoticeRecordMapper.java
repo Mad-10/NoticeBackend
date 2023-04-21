@@ -40,4 +40,8 @@ public interface NoticeRecordMapper {
     @Delete("DELETE FROM Notice_Record WHERE id = #{id}")
     void deleteById(@Param("id") Integer id);
 
+    @Select("SELECT * FROM Notice_Record WHERE type_id = #{typeId}")
+    @ResultMap("noticeRecordMap")
+    List<NoticeRecord> findByNoticeType(@Param("typeId") Integer typeId);
+
 }
