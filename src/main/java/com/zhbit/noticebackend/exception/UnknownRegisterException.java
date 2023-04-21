@@ -2,7 +2,7 @@ package com.zhbit.noticebackend.exception;
 
 public class UnknownRegisterException extends Exception{
     public UnknownRegisterException() {
-        super("用户名和密码都符合要求，且用户名未被注册，但因未知原因注册失败！");
+        super("The username and password meet the requirements, and the username has not been registered, but registration failed for unknown reasons!");
     }
     UnknownRegisterException(String message) {
         super(message);
