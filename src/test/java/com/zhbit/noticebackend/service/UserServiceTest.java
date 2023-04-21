@@ -1,9 +1,9 @@
 package com.zhbit.noticebackend.service;
 
 import com.zhbit.noticebackend.entity.User;
-import com.zhbit.noticebackend.exception.PasswordNotMatchException;
-import com.zhbit.noticebackend.exception.UserAlreadyExistsException;
-import com.zhbit.noticebackend.exception.UserNotFoundException;
+import com.zhbit.noticebackend.exception.user.PasswordNotMatchException;
+import com.zhbit.noticebackend.exception.user.UserAlreadyExistsException;
+import com.zhbit.noticebackend.exception.user.UserNotFoundException;
 import com.zhbit.noticebackend.mapper.UserMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

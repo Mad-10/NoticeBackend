@@ -1,4 +1,4 @@
-package com.zhbit.noticebackend.exception;
+package com.zhbit.noticebackend.exception.user;
 
 public class UsernameEmptyException extends Exception{
     public UsernameEmptyException() {

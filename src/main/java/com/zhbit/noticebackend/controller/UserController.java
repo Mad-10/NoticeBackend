@@ -2,7 +2,7 @@ package com.zhbit.noticebackend.controller;
 
 import com.zhbit.noticebackend.entity.User;
 import com.zhbit.noticebackend.entity.UserDto;
-import com.zhbit.noticebackend.exception.*;
+import com.zhbit.noticebackend.exception.user.*;
 import com.zhbit.noticebackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
