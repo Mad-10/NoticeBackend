@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import com.zhbit.noticebackend.entity.NoticeType;
+import com.zhbit.noticebackend.exception.notice_type.CanNotReceiveNoticeTypeObjectException;
+import com.zhbit.noticebackend.exception.notice_type.NoticeTypeAlreadyExistsException;
+import com.zhbit.noticebackend.exception.notice_type.TypeNameEmptyException;
 import com.zhbit.noticebackend.mapper.NoticeTypeMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -70,7 +73,11 @@ class NoticeTypeServiceTest {
     void saveTest() {
         NoticeType noticeType = new NoticeType();
         noticeType.setTypeName("测试类型");
-        noticeTypeService.save(noticeType);
+        try {
+            noticeTypeService.save(noticeType);
+        } catch (CanNotReceiveNoticeTypeObjectException | TypeNameEmptyException | NoticeTypeAlreadyExistsException e) {
+            e.printStackTrace();
+        }
 
         // 通过id查询刚刚添加的公告类型
         NoticeType result = noticeTypeService.findById(noticeType.getId());

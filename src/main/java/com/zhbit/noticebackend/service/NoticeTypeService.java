@@ -1,6 +1,9 @@
 package com.zhbit.noticebackend.service;
 
 import com.zhbit.noticebackend.entity.NoticeType;
+import com.zhbit.noticebackend.exception.notice_type.CanNotReceiveNoticeTypeObjectException;
+import com.zhbit.noticebackend.exception.notice_type.NoticeTypeAlreadyExistsException;
+import com.zhbit.noticebackend.exception.notice_type.TypeNameEmptyException;
 import com.zhbit.noticebackend.mapper.NoticeRecordMapper;
 import com.zhbit.noticebackend.mapper.NoticeTypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +37,19 @@ public class NoticeTypeService {
         return noticeTypeMapper.findAll();
     }
 
-    public void save(NoticeType noticeType) {
-        noticeTypeMapper.save(noticeType);
+    public void save(NoticeType noticeType) throws CanNotReceiveNoticeTypeObjectException, TypeNameEmptyException, NoticeTypeAlreadyExistsException {
+        if (noticeType == null) {
+            throw new CanNotReceiveNoticeTypeObjectException();
+        }
+        if (noticeType.getTypeName() == null) {
+            throw new TypeNameEmptyException();
+        }
+        NoticeType tmpNoticeType = findByTypeName(noticeType.getTypeName());
+        if (tmpNoticeType == null) {
+            noticeTypeMapper.save(noticeType);
+        } else {
+            throw new NoticeTypeAlreadyExistsException();
+        }
     }
 
     public void update(NoticeType noticeType) {
